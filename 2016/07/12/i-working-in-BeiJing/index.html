@@ -1,0 +1,697 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="BeiJing," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="demo地址：gitHub
+###一、先来个效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-自定义带抽屉效果的tabBar">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/i-working-in-BeiJing/index.html">
+<meta property="og:site_name" content="Gavin">
+<meta property="og:description" content="demo地址：gitHub
+###一、先来个效果">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1976231-1a2d054f286937af.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-07-12T15:35:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-自定义带抽屉效果的tabBar">
+<meta name="twitter:description" content="demo地址：gitHub
+###一、先来个效果">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1976231-1a2d054f286937af.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/12/i-working-in-BeiJing/"/>
+
+  <title> iOS-自定义带抽屉效果的tabBar | Gavin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?f1a2216443ab28a0ebd88412f5f5b3aa";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Gavin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录成长过程中的点点滴滴</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS-自定义带抽屉效果的tabBar
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-12T23:19:35+08:00" content="2016-07-12">
+              2016-07-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/12/i-working-in-BeiJing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/i-working-in-BeiJing/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar" target="_blank" rel="external">gitHub</a></p>
+<p>###一、先来个效果</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1976231-1a2d054f286937af.gif?imageMogr2/auto-orient/strip" alt="tabBar.gif"><br><a id="more"></a></p>
+<p>###二、代码示例<br>1.抽屉页作为根视图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div></pre></td><td class="code"><pre><div class="line">@interface DrawerViewController ()</div><div class="line">&#123;</div><div class="line">    UITapGestureRecognizer *tapGesture;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建左边的抽屉</div><div class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</div><div class="line"></div><div class="line">//创建右边的标签控制器</div><div class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</div><div class="line">//抽屉是否显示的标示</div><div class="line"></div><div class="line">@property (nonatomic, assign) BOOL isOpen;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation DrawerViewController</div><div class="line"></div><div class="line">- (void)dealloc</div><div class="line">&#123;</div><div class="line">    //移除通知</div><div class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</div><div class="line">&#125;</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    [self createTabBarController];</div><div class="line">    [self createLeftVc];</div><div class="line">    </div><div class="line">    self.view.backgroundColor = [UIColor grayColor];</div><div class="line">    </div><div class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</div><div class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</div><div class="line">    </div><div class="line">&#125;</div><div class="line">- (void)buttonTap</div><div class="line">&#123;</div><div class="line">    //抽屉展开时则隐藏</div><div class="line">    if (self.isOpen == YES) &#123;</div><div class="line">        [self openOrHidden];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">//创建左边抽屉</div><div class="line">- (void)createLeftVc</div><div class="line">&#123;</div><div class="line">    self.leftViewController = [[LeftViewController alloc]init];</div><div class="line">    </div><div class="line">    //抽屉控制器添加到父控制器中</div><div class="line">    [self addChildViewController:self.leftViewController];</div><div class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</div><div class="line">    [self.view addSubview:self.leftViewController.view];</div><div class="line">    [self.leftViewController didMoveToParentViewController:self];</div><div class="line">    </div><div class="line">&#125;</div><div class="line">//创建右边的标签控制器</div><div class="line">- (void)createTabBarController&#123;</div><div class="line">    //</div><div class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</div><div class="line">    </div><div class="line">    //保存viewControllers</div><div class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</div><div class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</div><div class="line">        //先把字符串转化为类名</div><div class="line">        Class class = NSClassFromString(obj);</div><div class="line">        </div><div class="line">        //创建ViewController</div><div class="line">        UIViewController *vc = [[class alloc]init];</div><div class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</div><div class="line">        </div><div class="line">        [viewControllers addObject:aNav];</div><div class="line">        </div><div class="line">    &#125;];</div><div class="line">    //TabBarController 创建</div><div class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</div><div class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</div><div class="line">    </div><div class="line">    //添加标签控制器到父控制器</div><div class="line">    [self addChildViewController:self.mainViewController];</div><div class="line">    self.mainViewController.view.frame = BOUNDS;</div><div class="line">    [self.view addSubview:self.mainViewController.view];</div><div class="line">    [self.mainViewController didMoveToParentViewController:self];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//标签控制器显示的vc的根控制器的view往右边移动</div><div class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</div><div class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</div><div class="line">&#123;</div><div class="line">    //标签控制器当中 当前显示的控制器</div><div class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</div><div class="line">    //取出导航控制器的根控制器</div><div class="line">    UIViewController *rootVc = nav.childViewControllers[0];</div><div class="line">    rootVc.view.frame = RightContentEndFrame();</div><div class="line">&#125;</div><div class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</div><div class="line">&#123;</div><div class="line">    //标签控制器当中 当前显示的控制器</div><div class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</div><div class="line">    //取出导航控制器的根控制器</div><div class="line">    UIViewController *rootVc = nav.childViewControllers[0];</div><div class="line">    rootVc.view.frame = RigntContentStartFrame();</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//显示左边抽屉</div><div class="line">- (void)open</div><div class="line">&#123;</div><div class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</div><div class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</div><div class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</div><div class="line">    &#125; completion:nil];</div><div class="line">    </div><div class="line">    //添加点击手势，点击某些区域的隐藏抽屉</div><div class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</div><div class="line">    tapGesture.numberOfTapsRequired = 1;</div><div class="line">    tapGesture.numberOfTouchesRequired = 1;</div><div class="line">    [self.view addGestureRecognizer:tapGesture];</div><div class="line">&#125;</div><div class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</div><div class="line">&#123;</div><div class="line">    //获取点击的位置</div><div class="line">    CGPoint point = [gesturer locationInView:self.view];</div><div class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    [self hidden];</div><div class="line">    self.isOpen = NO;</div><div class="line">    //移除手势</div><div class="line">    [self.view removeGestureRecognizer:tapGesture];</div><div class="line">&#125;</div><div class="line">//隐藏左边抽屉</div><div class="line">- (void)hidden</div><div class="line">&#123;</div><div class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</div><div class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</div><div class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</div><div class="line">    &#125; completion:nil];</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)openOrHidden</div><div class="line">&#123;</div><div class="line">    //当前如果是隐藏，则显示</div><div class="line">    if (self.isOpen == NO) &#123;</div><div class="line">        [self open];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //当前如果是显示的，则隐藏</div><div class="line">    if (self.isOpen == YES) &#123;</div><div class="line">        [self hidden];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //改变隐藏标记</div><div class="line">    self.isOpen = !self.isOpen;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>2.标签视图 修改方法 <figure class="highlight plain"><figcaption><span>(void)selectBtn:(UIButton *)sender```中的切换效果可以实现不同的切换动画与效果。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>@implementation MTabBar</p>
+<ul>
+<li><p>(instancetype)initWithTitles:(NSArray <em>)titles imageNames:(NSArray </em>)imageNames<br>{<br>  self = [super initWithFrame:TabBarFrame()];<br>  if (self) {</p>
+<pre><code>//标题数组不为空，图片名字个数 ＝ 标题个数
+self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];
+self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;
+[self addSubview:self.buttonBack];
+
+self.backgroundColor = TABBAR_BACK_COLOR;
+
+if ([titles count] &amp;&amp; [titles count] == [imageNames count]) {
+    [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];
+        button.tag = 1000 + idx;
+        [self addSubview:button];
+        //默认选中第一个
+        if (idx == 0) {
+            button.selected = YES;
+            self.selectedButton = button;
+        }
+
+        [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];
+</code></pre><p>//                // 图片宽 高分别为 44 24</p>
+<pre><code>        CGFloat x = (BUTTON_W - 44)/2;
+        [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];
+        //添加点击方法
+        [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }];
+}
+</code></pre><p>  }<br>  return self;<br>}<br>//button 点击方法</p>
+</li>
+<li><p>(void)selectBtn:(UIButton *)sender<br>{<br>  //让抽屉隐藏，发出通知<br>  [[NSNotificationCenter defaultCenter]postNotificationName:@”buttonTap” object:nil];</p>
+<p>  //选中的button 已经是选中状态 不用处理<br>  if (self.selectedButton == sender) {</p>
+<pre><code>return;
+</code></pre><p>  }<br>  //改变之前选中button的状态  为非选中状态<br>  self.selectedButton.selected = NO;</p>
+<p>  //改变当前选中button的状态<br>  sender.selected = YES;<br>  self.selectedButton = sender;<br>  //通知标签控制器显示当前button对应的viewController<br>  if (self.callBack) {</p>
+<pre><code>self.callBack(sender.tag - 1000);
+</code></pre><p>  }<br>  [UIView animateWithDuration:0.5 animations:^{</p>
+<pre><code>self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);
+</code></pre><p>  } completion:nil];<br>}<br>UILabel <em>MakeLabel(CGRect frame, NSString </em>title)<br>{<br>  UILabel <em>label = [[UILabel alloc]initWithFrame:frame];<br>//    label.userInteractionEnabled = YES;<br>  label.backgroundColor = [UIColor clearColor];<br>  label.textColor = [UIColor whiteColor];<br>  label.textAlignment = NSTextAlignmentCenter;<br>  label.text = title;<br>  return label;<br>}<br>//根据 frame和 imageName 创建UIImageView<br>UIImageView </em>MakeImageView(CGRect frame, NSString <em>imageName)<br>{<br>  UIImageView </em>imageV = [[UIImageView alloc]initWithFrame:frame];<br>//    imageV.userInteractionEnabled = YES;<br>  imageV.backgroundColor = [UIColor clearColor];<br>  imageV.image = [UIImage imageNamed:imageName];<br>  return imageV;<br>}<br>@end</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3.标签控制器</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>@interface MTabBarViewController ()</p>
+<p>@end</p>
+<p>@implementation MTabBarViewController</p>
+<ul>
+<li><p>(instancetype)initWithViewControllers:(NSArray *)viewControllers<br>{<br>  self = [super init];<br>  if (self) {</p>
+<pre><code>_viewControllers = viewControllers;
+//遍历数组，添加子控制器
+[_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self addChild:obj];
+}];
+/*
+ @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]
+ @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]
+ */
+_tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];
+[self.view addSubview:self.tabBar];
+__weak typeof(self) weakSelf = self;
+self.tabBar.callBack = ^(NSInteger index){
+    weakSelf.selectedIndex = index;
+};
+//默认选中第0个
+self.selectedIndex = 0;
+</code></pre><p>  }<br>  return self;<br>}</p>
+</li>
+<li><p>(void)setSelectedIndex:(NSInteger)selectedIndex<br>{<br>  //取出当前控制器 oldVc<br>  UIViewController <em>oldVc = self.viewControllers[self.selectedIndex];<br>  //取出将要显示的 控制器 newVc<br>  UIViewController </em>newVc = self.viewControllers[selectedIndex];<br>  //动画 向左边移动<br>  newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);<br>  //改变 newVc 的视图层次</p>
+<p>  //把newVc.view 的视图放在 self.tabBar 的下面<br>  [self.view insertSubview:newVc.view belowSubview:self.tabBar];<br>  [UIView animateWithDuration:0.5 animations:^{</p>
+<pre><code>oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);
+newVc.view.frame = BOUNDS;
+</code></pre><p>  }];<br>  _selectedIndex = selectedIndex;<br>}</p>
+</li>
+</ul>
+<p>//添加子控制器具体步骤</p>
+<ul>
+<li>(void)addChild:(UIViewController *)viewController<br>{<br>  [self addChildViewController:viewController];<br>  viewController.view.frame = BOUNDS;<br>  //将viewContoller.view 放在最底层<br>  [self.view insertSubview:viewController.view atIndex:0];<br>  [viewController didMoveToParentViewController:self];</li>
+</ul>
+<p>//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面<br>}<br>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</div></pre></td></tr></table></figure></p>
+<p>CGRect TabBarFrame()<br>{<br>    return CGRectMake(0, S_H-64, S_W, 64);<br>}</p>
+<p>//左边抽屉隐藏（开始）的位置<br>CGRect LeftViewStartFrame()<br>{<br>    return CGRectMake(-S_W<em>0.75, 67,S_W</em>0.75 , S_H-64-64-6);<br>}<br>//左边抽屉显示（结束）的位置<br>CGRect LeftViewEndFrame()<br>{<br>    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);<br>}</p>
+<p>//右边内容开始（抽屉隐藏时）的位置<br>CGRect RigntContentStartFrame()<br>{<br>    return CGRectMake(0, 0, S_W, S_H);<br>}</p>
+<p>//右边内容结束（抽屉显示时）的位置<br>CGRect RightContentEndFrame()<br>{<br>    return CGRectMake(S_W*0.75, 0, S_W, S_H);<br>}</p>
+<p>CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)<br>{<br>    return CGRectMake(x, y, w, h);<br>}<br>@end</p>
+<p>```</p>
+<p>欢迎下载</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BeiJing/" rel="tag">#BeiJing</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/12/My-First-Blog/" rel="next" title="My First Blog">
+                <i class="fa fa-chevron-left"></i> My First Blog
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/12/dddd/" rel="prev" title="iOS 下加载本地HTML/js/css/image 等路径问题">
+                iOS 下加载本地HTML/js/css/image 等路径问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/12/i-working-in-BeiJing/"
+           data-title="iOS-自定义带抽屉效果的tabBar" data-url="http://yoursite.com/2016/07/12/i-working-in-BeiJing/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="kindyourself@163.com" />
+          <p class="site-author-name" itemprop="name">kindyourself@163.com</p>
+          <p class="site-description motion-element" itemprop="description">我爱敏敏</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kindyourself@163.com</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"GavinCarter1991"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
