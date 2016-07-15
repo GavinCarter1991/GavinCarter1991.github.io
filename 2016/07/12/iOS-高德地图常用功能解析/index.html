@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="高德  地图," />
+  <meta name="keywords" content="高德，常用，解析," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。
-  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所">
+  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS-高德地图常用功能解析">
-<meta property="og:url" content="http://yoursite.com/2016/07/12/高度地图/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/iOS-高德地图常用功能解析/index.html">
 <meta property="og:site_name" content="Gavin">
 <meta property="og:description" content="一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。
-  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所">
-<meta property="og:updated_time" content="2016-07-12T15:34:05.000Z">
+  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如">
+<meta property="og:updated_time" content="2016-07-15T17:40:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-高德地图常用功能解析">
 <meta name="twitter:description" content="一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。
-  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所">
+  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如">
 
 
 
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/12/高度地图/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/12/iOS-高德地图常用功能解析/"/>
 
   <title> iOS-高德地图常用功能解析 | Gavin </title>
 </head>
@@ -272,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/12/高度地图/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/高度地图/" itemprop="commentsCount"></span>
+                <a href="/2016/07/12/iOS-高德地图常用功能解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/iOS-高德地图常用功能解析/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,7 +296,7 @@
       
 
       
-        <p>  一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。</p>
+        <p>一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。</p>
 <p>  要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如果需要导航就可以不用pod搜索SDK了。最后就是本地导入相应头文件，然后配置key。<br> <a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">const static NSString *APIKey = @&quot;你申请的key&quot;;</div><div class="line"></div><div class="line">// 配置用户Key</div><div class="line"></div><div class="line">[MAMapServices sharedServices].apiKey = (NSString *)APIKey;</div><div class="line"></div><div class="line">// 搜索</div><div class="line"></div><div class="line">[AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;</div><div class="line"></div><div class="line">// 导航</div><div class="line"></div><div class="line">[AMapNaviServices sharedServices].apiKey = (NSString *)APIKey;</div></pre></td></tr></table></figure>
 <p>后面的就可以按照它的开发指南写，要注意的是路径规划是建立在路径搜索之上的，要路径规划先得完成路径搜索。导航的语音合成，我是用的讯飞的在线语音合成，离线的好像要收费，在下穷猿一名。高德导航的demo好像也是用的讯飞的。去讯飞API官网注册账号，创建应用，获取key，然后配置语音。</p>
@@ -328,7 +328,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/高德-地图/" rel="tag">#高德  地图</a>
+            <a href="/tags/高德，常用，解析/" rel="tag">#高德，常用，解析</a>
           
         </div>
       
@@ -337,7 +337,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/12/js-与-ios交互/" rel="next" title="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）">
+              <a href="/2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/" rel="next" title="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）">
                 <i class="fa fa-chevron-left"></i> iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）
               </a>
             
@@ -345,7 +345,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/12/test/" rel="prev" title="与前端朋友闲聊的发现-代码相通性">
+              <a href="/2016/07/16/与前端朋友闲聊的发现-代码相通性/" rel="prev" title="与前端朋友闲聊的发现-代码相通性">
                 与前端朋友闲聊的发现-代码相通性 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -373,8 +373,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/12/高度地图/"
-           data-title="iOS-高德地图常用功能解析" data-url="http://yoursite.com/2016/07/12/高度地图/">
+      <div class="ds-thread" data-thread-key="2016/07/12/iOS-高德地图常用功能解析/"
+           data-title="iOS-高德地图常用功能解析" data-url="http://yoursite.com/2016/07/12/iOS-高德地图常用功能解析/">
       </div>
     
   </div>
@@ -419,7 +419,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -429,7 +429,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

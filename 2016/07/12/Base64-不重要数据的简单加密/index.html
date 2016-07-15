@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="first,blog," />
+  <meta name="keywords" content="Base64,加密," />
 
 
 
@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="7-7：40： 总结当天难点 记录 
-7：40-9 ：看几个APP（简书、推酷等）的资料
-9-10：看视频资料或者第三方
-10-10：30：swift
-周六 2-3 简书记录这一周的资料   3-6 自定义开发，博客，自己小程序，维护gitHub，封装小demo，   8-10 查找项目难点 补充相关知识
-周天 3-6 看一个大牛的博客  封装2个demo6-7 准备下一周大致内容">
+<meta name="description" content="###导语
+
+ 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。
+
+##我的实现过程（可以根据公司需求自定义）：1.先编码一次2.对编码结果的数据交换首位字符在编码一次3.对编码结果逆序在编码一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my first blog">
-<meta property="og:url" content="http://yoursite.com/2016/07/12/my-first-blog/index.html">
+<meta property="og:title" content="Base64-不重要数据的简单加密">
+<meta property="og:url" content="http://yoursite.com/2016/07/12/Base64-不重要数据的简单加密/index.html">
 <meta property="og:site_name" content="Gavin">
-<meta property="og:description" content="7-7：40： 总结当天难点 记录 
-7：40-9 ：看几个APP（简书、推酷等）的资料
-9-10：看视频资料或者第三方
-10-10：30：swift
-周六 2-3 简书记录这一周的资料   3-6 自定义开发，博客，自己小程序，维护gitHub，封装小demo，   8-10 查找项目难点 补充相关知识
-周天 3-6 看一个大牛的博客  封装2个demo6-7 准备下一周大致内容">
-<meta property="og:updated_time" content="2016-07-15T17:34:44.000Z">
+<meta property="og:description" content="###导语
+
+ 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。
+
+##我的实现过程（可以根据公司需求自定义）：1.先编码一次2.对编码结果的数据交换首位字符在编码一次3.对编码结果逆序在编码一">
+<meta property="og:updated_time" content="2016-07-15T17:50:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my first blog">
-<meta name="twitter:description" content="7-7：40： 总结当天难点 记录 
-7：40-9 ：看几个APP（简书、推酷等）的资料
-9-10：看视频资料或者第三方
-10-10：30：swift
-周六 2-3 简书记录这一周的资料   3-6 自定义开发，博客，自己小程序，维护gitHub，封装小demo，   8-10 查找项目难点 补充相关知识
-周天 3-6 看一个大牛的博客  封装2个demo6-7 准备下一周大致内容">
+<meta name="twitter:title" content="Base64-不重要数据的简单加密">
+<meta name="twitter:description" content="###导语
+
+ 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。
+
+##我的实现过程（可以根据公司需求自定义）：1.先编码一次2.对编码结果的数据交换首位字符在编码一次3.对编码结果逆序在编码一">
 
 
 
@@ -129,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/12/my-first-blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/12/Base64-不重要数据的简单加密/"/>
 
-  <title> my first blog | Gavin </title>
+  <title> Base64-不重要数据的简单加密 | Gavin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +258,7 @@
             
             
               
-                my first blog
+                Base64-不重要数据的简单加密
               
             
           </h1>
@@ -273,7 +270,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-12T20:55:38+08:00" content="2016-07-12">
+            <time itemprop="dateCreated" datetime="2016-07-12T23:25:36+08:00" content="2016-07-12">
               2016-07-12
             </time>
           </span>
@@ -284,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/12/my-first-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/my-first-blog/" itemprop="commentsCount"></span>
+                <a href="/2016/07/12/Base64-不重要数据的简单加密/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/Base64-不重要数据的简单加密/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,15 +305,13 @@
       
 
       
-        <ol>
-<li>7-7：40： 总结当天难点 记录 </li>
-<li>7：40-9 ：看几个APP（简书、推酷等）的资料</li>
-<li>9-10：看视频资料或者第三方</li>
-<li>10-10：30：swift</li>
-<li>周六 2-3 简书记录这一周的资料<br>   3-6 自定义开发，博客，自己小程序，维护gitHub，封装小demo，<br>   8-10 查找项目难点 补充相关知识</li>
-<li>周天 3-6 看一个大牛的博客  封装2个demo<pre><code>6-7 准备下一周大致内容
-</code></pre></li>
-</ol>
+        <p>###导语</p>
+<blockquote>
+<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+</blockquote>
+<p>##我的实现过程（可以根据公司需求自定义）：<br>1.先编码一次<br>2.对编码结果的数据交换首位字符在编码一次<br>3.对编码结果逆序在编码一次<br><a id="more"></a></p>
+<p>##示例代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</div><div class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</div><div class="line">   </div><div class="line">    // 1次</div><div class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</div><div class="line">    // 交换字符串首位次序</div><div class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</div><div class="line">    </div><div class="line">    // 2次</div><div class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</div><div class="line">    // 交换字符串首位次序</div><div class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</div><div class="line">    </div><div class="line">    // 3次</div><div class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</div><div class="line">    </div><div class="line">    return encrypt3;</div><div class="line">&#125;</div><div class="line">// 添加逗号</div><div class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</div><div class="line">    NSMutableString *mutableString = [string mutableCopy];</div><div class="line">    NSInteger cont = mutableString.length;</div><div class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</div><div class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</div><div class="line">    &#125;</div><div class="line">    return mutableString;</div><div class="line">&#125;</div><div class="line">// 去掉逗号</div><div class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</div><div class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</div><div class="line">&#125;</div><div class="line">// 字符串转数组</div><div class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</div><div class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</div><div class="line">    return mutableArray;</div><div class="line">&#125;</div><div class="line">// 数组转字符串</div><div class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</div><div class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</div><div class="line">&#125;</div><div class="line">// 字符串交换首尾</div><div class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</div><div class="line">    NSString *str = [self addSeparaedSingle:string];</div><div class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</div><div class="line">    NSString *temp = mutableArray[0];</div><div class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</div><div class="line">    mutableArray[mutableArray.count - 1] = temp;</div><div class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</div><div class="line">    return [self removeSeparaedSingle:arrayString];</div><div class="line">&#125;</div><div class="line">// 字符串逆序</div><div class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</div><div class="line">    NSString *str = [self addSeparaedSingle:string];</div><div class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</div><div class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</div><div class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</div><div class="line">    return [self removeSeparaedSingle:arrayString];</div><div class="line">&#125;</div><div class="line">// 编码</div><div class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</div><div class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">    return [data base64EncodedStringWithOptions:0];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###结束语：<br>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
 
       
     </div>
@@ -339,9 +334,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/first/" rel="tag">#first</a>
+            <a href="/tags/Base64/" rel="tag">#Base64</a>
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/加密/" rel="tag">#加密</a>
           
         </div>
       
@@ -350,12 +345,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/12/iOS-下加载本地HTML-js-css-image-等路径问题/" rel="next" title="iOS 下加载本地HTML/js/css/image 等路径问题">
+                <i class="fa fa-chevron-left"></i> iOS 下加载本地HTML/js/css/image 等路径问题
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/12/iOS-自定义带抽屉效果的tabBar/" rel="prev" title="iOS-自定义带抽屉效果的tabBar">
-                iOS-自定义带抽屉效果的tabBar <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/12/iOS-解压zip/" rel="prev" title="iOS-解压zip">
+                iOS-解压zip <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -382,8 +381,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/12/my-first-blog/"
-           data-title="my first blog" data-url="http://yoursite.com/2016/07/12/my-first-blog/">
+      <div class="ds-thread" data-thread-key="2016/07/12/Base64-不重要数据的简单加密/"
+           data-title="Base64-不重要数据的简单加密" data-url="http://yoursite.com/2016/07/12/Base64-不重要数据的简单加密/">
       </div>
     
   </div>
