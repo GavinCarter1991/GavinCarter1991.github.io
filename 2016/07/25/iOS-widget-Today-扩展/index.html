@@ -84,24 +84,18 @@
 
 
 
-<meta name="description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。
-
-###一、目标：      我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，">
+<meta name="description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS-widget-Today 扩展">
 <meta property="og:url" content="http://yoursite.com/2016/07/25/iOS-widget-Today-扩展/index.html">
 <meta property="og:site_name" content="Gavin">
-<meta property="og:description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。
-
-###一、目标：      我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，">
+<meta property="og:description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1976231-b81e7f440082cff6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1976231-4cd753bafe13fb13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-07-25T03:18:45.000Z">
+<meta property="og:updated_time" content="2016-07-25T03:27:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-widget-Today 扩展">
-<meta name="twitter:description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。
-
-###一、目标：      我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，">
+<meta name="twitter:description" content="今天要分享的是通知中心扩展中的-Today扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1976231-b81e7f440082cff6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -313,7 +307,7 @@
 
       
         <blockquote>
-<p>今天要分享的是通知中心扩展中的-<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/" target="_blank" rel="external">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。</p>
+<p>今天要分享的是通知中心扩展中的-<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/" target="_blank" rel="external">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。<br><a id="more"></a></p>
 </blockquote>
 <p>###一、目标：<br>      我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，我也不知道这样算不算滥用widget，因为之前看见过有人的应用被苹果拒绝就是因为滥用widget导致的。</p>
 <p>###二、实现：<br>1.因为widget是一个单独的进程所以需要创建一个target：<br><img src="http://upload-images.jianshu.io/upload_images/1976231-b81e7f440082cff6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首先 2016-07-24 23.01.34.png"></p>
