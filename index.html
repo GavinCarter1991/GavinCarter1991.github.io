@@ -278,6 +278,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -308,22 +327,15 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1976231-b043a4e1757e7565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
-<p>一、这是代码上传的HTML部分代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</div><div class="line">									&lt;div class=&quot;tool floatLeft&quot;&gt;</div><div class="line">										&lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</div><div class="line">										&lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</div><div class="line">									&lt;/div&gt;</div><div class="line"></div><div class="line">									&lt;div class=&quot;upImage floatLeft&quot;&gt;</div><div class="line">										&lt;div class=&quot;tool floatLeft&quot;&gt;</div><div class="line">											&lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</div><div class="line">											&lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</div><div class="line">												&lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</div><div class="line">											&lt;/a&gt;</div><div class="line">										&lt;/div&gt;</div><div class="line"></div><div class="line">										&lt;div class=&quot;tool floatLeft&quot;&gt;</div><div class="line">											&lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</div><div class="line">											&lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</div><div class="line">										&lt;/div&gt;</div><div class="line">									&lt;/div&gt;</div><div class="line"></div><div class="line">									&lt;div class=&quot;upImage floatLeft&quot;&gt;</div><div class="line">										&lt;div class=&quot;tool floatLeft&quot;&gt;</div><div class="line">											&lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</div><div class="line">											&lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</div><div class="line">												&lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</div><div class="line">											&lt;/a&gt;</div><div class="line">										&lt;/div&gt;</div><div class="line"></div><div class="line">										&lt;div class=&quot;tool floatLeft&quot;&gt;</div><div class="line">											&lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</div><div class="line">											&lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</div><div class="line">										&lt;/div&gt;</div><div class="line">									&lt;/div&gt;</div><div class="line">								&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>二、修改上传按钮的部分css代码<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.file &#123;</div><div class="line">    position: relative;</div><div class="line">    display: inline-block;</div><div class="line">    background: #D0EEFF;</div><div class="line">    border: 1px solid #99D3F5;</div><div class="line">    border-radius: 4px;</div><div class="line">    padding: 4px 12px;</div><div class="line">    overflow: hidden;</div><div class="line">    color: #1E88C7;</div><div class="line">    text-decoration: none;</div><div class="line">    text-indent: 0;</div><div class="line">    line-height: 20px;</div><div class="line">&#125;</div><div class="line">.file input &#123;</div><div class="line">    position: absolute;</div><div class="line">    font-size: 100px;</div><div class="line">    right: 0;</div><div class="line">    top: 0;</div><div class="line">    opacity: 0;</div><div class="line">&#125;</div><div class="line">.file:hover &#123;</div><div class="line">    text-decoration: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>三、这是JS部分的代码<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">function setImagePreview(avalue) &#123;</div><div class="line">               //input</div><div class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</div><div class="line">               var docObj = docObjs[avalue];</div><div class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</div><div class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</div><div class="line">                   var imgObjPreview = imgObjPreviews[0];</div><div class="line">               if (avalue == 0) &#123;</div><div class="line">                   imgObjPreview.style.display = &apos;block&apos;;</div><div class="line">                   imgObjPreview.style.width = &apos;200px&apos;;</div><div class="line">                   imgObjPreview.style.height = &apos;350px&apos;;</div><div class="line">               &#125;else &#123;</div><div class="line">                   //火狐下，直接设img属性</div><div class="line">                   imgObjPreview.style.display = &apos;block&apos;;</div><div class="line">                   imgObjPreview.style.width = &apos;100px&apos;;</div><div class="line">                   imgObjPreview.style.height = &apos;100px&apos;;</div><div class="line">               &#125;</div><div class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</div><div class="line">               &#125; else &#123;</div><div class="line">                   //IE下，使用滤镜</div><div class="line">                   // docObj.select();</div><div class="line">                   // var imgSrc = document.selection.createRange().text;</div><div class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</div><div class="line">                   // //必须设置初始大小</div><div class="line">                   // localImagId.style.width = &quot;100px&quot;;</div><div class="line">                   // localImagId.style.height = &quot;100px&quot;;</div><div class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</div><div class="line">                   // try &#123;</div><div class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</div><div class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</div><div class="line">                   // &#125; catch(e) &#123;</div><div class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</div><div class="line">                   //     return false;</div><div class="line">                   // &#125;</div><div class="line">                   // imgObjPreview.style.display = &apos;none&apos;;</div><div class="line">                   // document.selection.empty();</div><div class="line">               &#125;</div><div class="line">               return true;</div><div class="line">           &#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>问题与解决：<br>问题一：是上传按钮默认的文件上传是这样的<br><img src="http://upload-images.jianshu.io/upload_images/1976231-a2ee7d10b1a3f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="默认 2016-08-01 00.26.51.png"><br>但是我需要的是这样的：</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/1976231-cce6da1558032555.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目标 2016-08-01 00.28.07.png"><br>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）<br>问题二：点击事件冲突<br>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
-<p>#########NOTE：我刚刚开始学习前端开发，很多不懂，如有错误。请亲们一定要指出啊！</p>
-
-          
+<p><img src="http://upload-images.jianshu.io/upload_images/1976231-b043a4e1757e7565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="来个效果一撇 2016-08-01 00.13.22.png"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/01/图片上传预览/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -425,6 +437,129 @@
 <p>今天要分享的是通知中心扩展中的-<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/25/iOS-widget-Today-扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/16/gitHub-hexo-个人博客/" itemprop="url">
+                  gitHub hexo 个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-16T04:08:01+08:00" content="2016-07-16">
+              2016-07-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/16/gitHub-hexo-个人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/16/gitHub-hexo-个人博客/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/16/gitHub-hexo-个人博客/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1319,137 +1454,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/12/my-first-blog/" itemprop="url">
-                  my first blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-12T20:55:38+08:00" content="2016-07-12">
-              2016-07-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Other/" itemprop="url" rel="index">
-                    <span itemprop="name">Other</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/12/my-first-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/my-first-blog/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>7-7：40： 总结当天难点 记录 </li>
-<li>7：40-9 ：看几个APP（简书、推酷等）的资料</li>
-<li>9-10：看视频资料或者第三方</li>
-<li>10-10：30：swift</li>
-<li>周六 2-3 简书记录这一周的资料<br>   3-6 自定义开发，博客，自己小程序，维护gitHub，封装小demo，<br>   8-10 查找项目难点 补充相关知识</li>
-<li>周天 3-6 看一个大牛的博客  封装2个demo<pre><code>6-7 准备下一周大致内容
-</code></pre></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1488,7 +1499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1505,7 +1516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
