@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript，交互，第三方," />
+  <meta name="keywords" content="HTML视频,webView,缩略图," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。其交互方式有很多种
-一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。">
+<meta name="description" content="最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个国外的网站上面发现了一个折中的解决办法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）">
-<meta property="og:url" content="http://yoursite.com/2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/index.html">
+<meta property="og:title" content="iOS-webView上加载HTML视频不显示缩略图">
+<meta property="og:url" content="http://yoursite.com/2016/08/08/iOS-webView上加载HTML视频不显示缩略图/index.html">
 <meta property="og:site_name" content="Gavin">
-<meta property="og:description" content="后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。其交互方式有很多种
-一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。">
-<meta property="og:updated_time" content="2016-07-15T18:34:57.000Z">
+<meta property="og:description" content="最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个国外的网站上面发现了一个折中的解决办法。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1976231-45e2bdd3bdeca941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1976231-31073401029bac50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-07T17:14:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）">
-<meta name="twitter:description" content="后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。其交互方式有很多种
-一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。">
+<meta name="twitter:title" content="iOS-webView上加载HTML视频不显示缩略图">
+<meta name="twitter:description" content="最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个国外的网站上面发现了一个折中的解决办法。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1976231-45e2bdd3bdeca941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -117,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/08/iOS-webView上加载HTML视频不显示缩略图/"/>
 
-  <title> iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方） | Gavin </title>
+  <title> iOS-webView上加载HTML视频不显示缩略图 | Gavin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +259,7 @@
             
             
               
-                iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）
+                iOS-webView上加载HTML视频不显示缩略图
               
             
           </h1>
@@ -271,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-12T23:27:47+08:00" content="2016-07-12">
-              2016-07-12
+            <time itemprop="dateCreated" datetime="2016-08-08T01:07:57+08:00" content="2016-08-08">
+              2016-08-08
             </time>
           </span>
 
@@ -301,8 +301,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/" itemprop="commentsCount"></span>
+                <a href="/2016/08/08/iOS-webView上加载HTML视频不显示缩略图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/08/iOS-webView上加载HTML视频不显示缩略图/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -325,37 +325,16 @@
       
 
       
-        <p>后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。<br>其交互方式有很多种</p>
-<p>一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];</div><div class="line"></div><div class="line">self.webView.delegate = self;</div><div class="line"></div><div class="line">[self.webView setUserInteractionEnabled:YES];//是否支持交互</div><div class="line"></div><div class="line">[self.webView setOpaque:NO];//opaque是不透明的意思</div><div class="line"></div><div class="line">[self.webView setScalesPageToFit:YES];//自动缩放以适应屏幕</div><div class="line"></div><div class="line">[self.view addSubview:self.webView];</div><div class="line"></div><div class="line">if (sender.tag == 101) &#123;</div><div class="line"></div><div class="line">// 返回（点击页面才会有返回）</div><div class="line"></div><div class="line">[self.mWebView goBack];</div><div class="line"></div><div class="line">&#125;else if (sender.tag == 102) &#123;</div><div class="line"></div><div class="line">// 前进（点击过的页面）</div><div class="line"></div><div class="line">[self.mWebView goForward];</div><div class="line"></div><div class="line">&#125;else &#123;</div><div class="line"></div><div class="line">// 刷新页面</div><div class="line"></div><div class="line">[self.mWebView reload];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：</p>
-<p>1、直接调用JS代码</p>
-<p>2、在ObjC中通过JSContext注入模型，然后调用模型的方法</p>
-<p>通过evaluateScript:方法就可以执行JS代码</p>
-<p>三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）</p>
-<p>四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。</p>
-<p>在iOS端：1.self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];</p>
-<p>链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2.[self.bridge registerHandler:@&quot;testJavascriptHandler&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</div><div class="line"></div><div class="line">NSLog(@&quot;ObjC Echo called with: %@&quot;, data);</div></pre></td></tr></table></figure>
-<p>// 反馈给JS</p>
-<p>responseCallback(data);</p>
-<p>}];</p>
-<p>// 在JS中如果调用了bridge.send()，那么将触发OC端_bridge初始化方法中的回调。</p>
-<p>// 在JS中调用了bridge.callHandler(‘testJavascriptHandler’)，它将触发OC端注册的同名方法</p>
-<p>// oc 同理</p>
-<p>// JS主动调用OjbC的方法</p>
-<p>// 这是JS会调用ObjC Echo方法，这是OC注册给JS调用的</p>
-<p>// JS需要回调，当然JS也可以传参数过来。data就是JS所传的参数，不一定需要传</p>
-<p>// OC端通过responseCallback回调JS端，JS就可以得到所需要的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">3.[self.bridge callHandler:@&quot;sayHello&quot; data:@&#123;@&quot;hello&quot;: @&quot;你好&quot;&#125; responseCallback:^(id responseData) &#123;</div><div class="line"></div><div class="line">NSLog(@&quot;回调结果: %@&quot;, responseData);</div><div class="line"></div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。</p>
-<p>js调用时也一样</p>
-<p>在JS端：</p>
-<p>1.Copy and paste setupWebViewJavascriptBridge into your JS:</p>
-<p>（此段代码为固定格式，直接放在js端就行）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function setupWebViewJavascriptBridge(callback) &#123;</div><div class="line"></div><div class="line">if (window.WebViewJavascriptBridge) &#123; return callback(WebViewJavascriptBridge); &#125;</div><div class="line"></div><div class="line">if (window.WVJBCallbacks) &#123; return window.WVJBCallbacks.push(callback); &#125;</div><div class="line"></div><div class="line">window.WVJBCallbacks = [callback];</div><div class="line"></div><div class="line">var WVJBIframe = document.createElement(&apos;iframe&apos;);</div><div class="line"></div><div class="line">WVJBIframe.style.display = &apos;none&apos;;</div><div class="line"></div><div class="line">WVJBIframe.src = &apos;wvjbscheme://__BRIDGE_LOADED__&apos;;</div><div class="line"></div><div class="line">document.documentElement.appendChild(WVJBIframe);</div><div class="line"></div><div class="line">setTimeout(function() &#123; document.documentElement.removeChild(WVJBIframe) &#125;, 0)</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>后面几步与iOS端一样</p>
-<p>如有错误，望请指出。</p>
+        <blockquote>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/" target="_blank" rel="external">国外的网站</a>上面发现了一个折中的解决办法。<br><a id="more"></a></p>
+</blockquote>
+<p>###办法<br>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1976231-45e2bdd3bdeca941.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="方法2016-08-08 00.29.36.png"></p>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t=xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+<p>这个方法其实还有一个用法：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1976231-31073401029bac50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="用法 2016-08-08 00.50.52.png"></p>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay=”autoplay”。</p>
+<p>###声明<br>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
 
       
     </div>
@@ -378,7 +357,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript，交互，第三方/" rel="tag">#JavaScript，交互，第三方</a>
+            <a href="/tags/HTML视频/" rel="tag">#HTML视频</a>
+          
+            <a href="/tags/webView/" rel="tag">#webView</a>
+          
+            <a href="/tags/缩略图/" rel="tag">#缩略图</a>
           
         </div>
       
@@ -387,17 +370,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/12/iOS-解压zip/" rel="next" title="iOS-解压zip">
-                <i class="fa fa-chevron-left"></i> iOS-解压zip
+              <a href="/2016/08/01/图片上传预览/" rel="next" title="图片上传预览">
+                <i class="fa fa-chevron-left"></i> 图片上传预览
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/12/iOS-高德地图常用功能解析/" rel="prev" title="iOS-高德地图常用功能解析">
-                iOS-高德地图常用功能解析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -423,8 +402,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/"
-           data-title="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）" data-url="http://yoursite.com/2016/07/12/iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）/">
+      <div class="ds-thread" data-thread-key="2016/08/08/iOS-webView上加载HTML视频不显示缩略图/"
+           data-title="iOS-webView上加载HTML视频不显示缩略图" data-url="http://yoursite.com/2016/08/08/iOS-webView上加载HTML视频不显示缩略图/">
       </div>
     
   </div>
