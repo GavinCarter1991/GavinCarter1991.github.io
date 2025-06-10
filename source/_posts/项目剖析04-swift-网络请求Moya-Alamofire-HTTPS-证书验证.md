@@ -9,23 +9,31 @@ categories: "swift"
 
 ## SSL证书验证
 
-&emsp;一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。
+**一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。**
 
->Alamofire5.0 以后将证书验证类放于ServerTrustEvaluation这个类里面。一共有6种验证策略：
-1. **DefaultTrustEvaluator** - （默认验证策略）只要是合法证书就能通过验证。
-2. **RevocationTrustEvaluator**（验证注销策略）对注销证书做的一种额外设置，Alamofire从iOS10.1才开始支持吊销证书的策略。
-3. **PinnedCertificatesTrustEvaluator**（证书验证策略）app端会对服务器端返回的证书和本地保存的证书中的全部内容进行校验需要全部正确，此验证策略还可以接受自签名证书，安全性相对较高，此方法较为固定，如果 Server 更新证书，App 需要定期更新并重新上架。
-4. **PublicKeysTrustEvaluator**（公钥验证策略）app端只会对服务器返回的证书和本地保存的证书中的 PublicKey(公钥)进行校验，所以当证书需要更新时，只需确保公钥保持不变，不需要更新App。
-5. **CompositeTrustEvaluator**（自定义组合验证策略）以上多种策略组合一起，只有在所有数组中值都成功时才成功。
-6. **DisabledTrustEvalutor**（不验验证策略）无条件信任，所有都可以通过验证。正式环境不建议用此策略，多用于测试。
+> Alamofire5.0 以后将证书验证类放于ServerTrustEvaluation这个类里面。一共有6种验证策略：
+> 
+> 1. **DefaultTrustEvaluator** - （默认验证策略）只要是合法证书就能通过验证。
+> 
+> 2. **RevocationTrustEvaluator**（验证注销策略）对注销证书做的一种额外设置，Alamofire从iOS10.1才开始支持吊销证书的策略。
+> 
+> 3. **PinnedCertificatesTrustEvaluator**（证书验证策略）app端会对服务器端返回的证书和本地保存的证书中的全部内容进行校验需要全部正确，此验证策略还可以接受自签名证书，安全性相对较高，此方法较为固定，如果 Server 更新证书，App 需要定期更新并重新上架。
+> 
+> 4. **PublicKeysTrustEvaluator**（公钥验证策略）app端只会对服务器返回的证书和本地保存的证书中的 PublicKey(公钥)进行校验，所以当证书需要更新时，只需确保公钥保持不变，不需要更新App。
+> 
+> 5. **CompositeTrustEvaluator**（自定义组合验证策略）以上多种策略组合一起，只有在所有数组中值都成功时才成功。
+> 
+> 6. **DisabledTrustEvalutor**（不验验证策略）无条件信任，所有都可以通过验证。正式环境不建议用此策略，多用于测试。
+
 
 **我们用的是PublicKeysTrustEvaluator（公钥验证策略）**
 * * *
 
-> 1.后台提供证书，将正式放在项目目录中。
+> 后台提供证书，将正式放在项目目录中。
 
 ![本地证书存放](https://i-blog.csdnimg.cn/blog_migrate/d2b909e2935eccedbf88e97df824ecf9.png)
-> 2.获取本地证书，提取证书的公钥（获取公钥key数组）。证书后缀名一般有：.cer、.crt、.der等，我项目中用的cer，证书链必须包含一个固定的公钥。
+
+> 获取本地证书，提取证书的公钥（获取公钥key数组）。证书后缀名一般有：.cer、.crt、.der等，我项目中用的cer，证书链必须包含一个固定的公钥。
 
 ```
 struct WTCertificates {
@@ -41,7 +49,7 @@ struct WTCertificates {
     }
 }
 ```
-> 3.给Session添加策略（接受质询）
+> 给Session添加策略（接受质询）
 
 ```
 var requestManagerSession: Session = {
@@ -57,14 +65,16 @@ var requestManagerSession: Session = {
     }
     return MoyaProvider<ApiManager>.defaultAlamofireSession()
 }()
+
 ```
 
-> 4.在Moya中添加requestManagerSession
+> 在Moya中添加requestManagerSession
 
 ```
 var JKOtherApiManagerProvider = MoyaProvider<JKOtherApiManager>(endpointClosure: endpointMapping, requestClosure: requestTimeoutClosure, session:requestManagerSession, plugins:[RequestAlertPlugin(), networkPlugin])
 ```
->## OC HTTPS 证书配置验证
+## OC HTTPS 证书配置验证
+
 ```
 //1 将证书拖进项目
 

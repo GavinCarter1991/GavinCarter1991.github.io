@@ -7,12 +7,12 @@ categories: "iOS"
 ---
 
 demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
-###一、先来个效果
+### 一、先来个效果
 
 ![tabBar.gif](https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png)
 
-###二、代码示例
-1.抽屉页作为根视图：
+### 二、代码示例
+**1.抽屉页作为根视图：**
 
 ```
 @interface DrawerViewController ()
@@ -57,6 +57,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     }
     
 }
+
 //创建左边抽屉
 - (void)createLeftVc
 {
@@ -69,6 +70,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     [self.leftViewController didMoveToParentViewController:self];
     
 }
+
 //创建右边的标签控制器
 - (void)createTabBarController{
     //
@@ -108,6 +110,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     UIViewController *rootVc = nav.childViewControllers[0];
     rootVc.view.frame = RightContentEndFrame();
 }
+
 - (void)tabBar_Nav_RootViewController_viewMoveLeft
 {
     //标签控制器当中 当前显示的控制器
@@ -116,7 +119,6 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     UIViewController *rootVc = nav.childViewControllers[0];
     rootVc.view.frame = RigntContentStartFrame();
 }
-
 
 //显示左边抽屉
 - (void)open
@@ -132,6 +134,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     tapGesture.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
 }
+
 - (void)tap:(UITapGestureRecognizer *)gesturer
 {
     //获取点击的位置
@@ -145,6 +148,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     //移除手势
     [self.view removeGestureRecognizer:tapGesture];
 }
+
 //隐藏左边抽屉
 - (void)hidden
 {
@@ -174,7 +178,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
 
 ```
 
-2.标签视图 修改方法 ```- (void)selectBtn:(UIButton *)sender```中的切换效果可以实现不同的切换动画与效果。
+**2.标签视图 修改方法 ```- (void)selectBtn:(UIButton *)sender```中的切换效果可以实现不同的切换动画与效果。**
 
 
 ```
@@ -213,6 +217,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
     }
     return self;
 }
+
 //button 点击方法
 - (void)selectBtn:(UIButton *)sender
 {
@@ -237,6 +242,7 @@ demo地址：[gitHub](https://github.com/GavinCarter1991/-tarBar)
         self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);
     } completion:nil];
 }
+
 UILabel *MakeLabel(CGRect frame, NSString *title)
 {
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
@@ -247,6 +253,7 @@ UILabel *MakeLabel(CGRect frame, NSString *title)
     label.text = title;
     return label;
 }
+
 //根据 frame和 imageName 创建UIImageView
 UIImageView *MakeImageView(CGRect frame, NSString *imageName)
 {
@@ -259,7 +266,7 @@ UIImageView *MakeImageView(CGRect frame, NSString *imageName)
 @end
 ```
 
-3.标签控制器
+**3.标签控制器**
 
 
 ```
@@ -294,6 +301,7 @@ UIImageView *MakeImageView(CGRect frame, NSString *imageName)
     }
     return self;
 }
+
 - (void)setSelectedIndex:(NSInteger)selectedIndex
 {
     //取出当前控制器 oldVc
@@ -327,7 +335,7 @@ UIImageView *MakeImageView(CGRect frame, NSString *imageName)
 @end
 ```
 
-4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果
+**4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果**
 
 
 ```
@@ -341,6 +349,7 @@ CGRect LeftViewStartFrame()
 {
     return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);
 }
+
 //左边抽屉显示（结束）的位置
 CGRect LeftViewEndFrame()
 {
@@ -368,4 +377,4 @@ CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)
 ```
 
 
-欢迎下载
+> 欢迎下载

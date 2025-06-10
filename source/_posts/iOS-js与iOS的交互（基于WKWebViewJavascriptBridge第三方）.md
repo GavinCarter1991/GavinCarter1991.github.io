@@ -10,59 +10,57 @@ categories: "iOS"
 其交互方式有很多种
 
 
-- 一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。
-
-
+### 一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。
 
 ```
 self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
 
 self.webView.delegate = self;
 
-[self.webView setUserInteractionEnabled:YES];//是否支持交互
+[self.webView setUserInteractionEnabled:YES]; //是否支持交互
 
-[self.webView setOpaque:NO];//opaque是不透明的意思
+[self.webView setOpaque:NO]; //opaque是不透明的意思
 
-[self.webView setScalesPageToFit:YES];//自动缩放以适应屏幕
+[self.webView setScalesPageToFit:YES]; //自动缩放以适应屏幕
 
 [self.view addSubview:self.webView];
 
 if (sender.tag == 101) {
 
 // 返回（点击页面才会有返回）
-
 [self.mWebView goBack];
 
 }else if (sender.tag == 102) {
 
 // 前进（点击过的页面）
-
 [self.mWebView goForward];
 
 }else {
 
 // 刷新页面
-
 [self.mWebView reload];
 
 }
 ```
 
-- 二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：
+### 二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：
 
-1、直接调用JS代码
+**1、直接调用JS代码**
 
-2、在ObjC中通过JSContext注入模型，然后调用模型的方法
+**2、在ObjC中通过JSContext注入模型，然后调用模型的方法**
 
-通过evaluateScript:方法就可以执行JS代码
+**通过evaluateScript:方法就可以执行JS代码**
 
-- 三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）
+### 三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）
 
-- 四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。
+### 四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。
 
+```
 在iOS端：1.self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
+```
 
-链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView
+> 链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView
+
 
 ```
 2.[self.bridge registerHandler:@"testJavascriptHandler" handler:^(id data, WVJBResponseCallback responseCallback) {
@@ -70,7 +68,6 @@ if (sender.tag == 101) {
 NSLog(@"ObjC Echo called with: %@", data);
 
 // 反馈给JS
-
 responseCallback(data);
 
 }];
@@ -96,9 +93,10 @@ NSLog(@"回调结果: %@", responseData);
 }];
 ```
 
+> 直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。
+> js调用时也一样
 
-直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。
-js调用时也一样
+
 在JS端：
 
 ```
@@ -126,6 +124,6 @@ setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
 
 }
 ```
-后面几步与iOS端一样
-
-如有错误，望请指出。
+> 后面几步与iOS端一样
+> 
+> 如有错误，望请指出。

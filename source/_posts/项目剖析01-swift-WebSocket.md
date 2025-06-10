@@ -8,7 +8,8 @@ categories: "swift"
 
 >已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是[Starscream](https://github.com/daltoniam/Starscream)这个第三方库，集成方法很简单去网站看看就知道。
 
-- ### 1 先上代码
+### 先上代码
+
 ```
 import UIKit
 import Reachability
@@ -42,25 +43,30 @@ final class WTWebsocket: NSObject,WebSocketDelegate {
         }
         isReconnect = true
     }
+    
     //发送文字消息
     @objc func sendBrandStr(){
         self.checkPing()
         let json = getJSONStringFromDictionary(dictionary: ["topic":"PING"])
         SingletonSocket.sharedInstance.socket.write(string: json)
     }
+    
     // 发送ping
     func hearJump() {
         let json = getJSONStringFromDictionary(dictionary: ["topic":"PING"])
         SingletonSocket.sharedInstance.socket.write(string: json)
     }
+    
     //  socket断开执行函数
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         //执行重新连接方法
         socketReconnect()
     }
+    
     //  接收返回消息函数
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
     }
+    
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else {return}
         if newStr == "PONG" {
@@ -69,6 +75,7 @@ final class WTWebsocket: NSObject,WebSocketDelegate {
         }
       // 处理收到的信息
     }
+    
     // 添加注册
     func subscribe(subscribeDict: [String : Any]) {
         var subscribeDicts = subscribeDict
@@ -79,6 +86,7 @@ final class WTWebsocket: NSObject,WebSocketDelegate {
             subscribeDicts as NSDictionary)
         SingletonSocket.sharedInstance.socket.write(string: json)
     }
+    
     //检测
     @objc func checkPing() {
         if !isPingBack {
@@ -93,6 +101,7 @@ final class WTWebsocket: NSObject,WebSocketDelegate {
     private override init() {
     }
 }
+
 //socket 重连逻辑
 func socketReconnect() {
     //判断网络情况，如果网络正常，可以执行重连
@@ -113,6 +122,7 @@ func socketReconnect() {
         //提示无网络
     }
 }
+
 //socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况
 func socketDisConnect() {
     if !SingletonSocket.sharedInstance.socket.isConnected {
@@ -121,10 +131,12 @@ func socketDisConnect() {
         SingletonSocket.sharedInstance.socket.disconnect()
     }
 }
+
 // initSocket方法
 func initWebSocketSingle () {
     SingletonSocket.sharedInstance.socket.delegate = webSocket
 }
+
 //声明webSocket单例
 class SingletonSocket {
     let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)
@@ -139,10 +151,12 @@ class SingletonSocket {
     }
 }
 ```
-- ### 2 整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点 
-  * 2.1 发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。
+### 整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点 
 
-  * 2.2 app在后台需要断开socket，当 app重新进入前台需要重新连接。
+> 发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。
+
+**app在后台需要断开socket，当 app重新进入前台需要重新连接**
+
 ```
 func applicationWillResignActive(_ application: UIApplication) {
         //进入后台模式，主动断开socket，防止出现处理不了的情况
@@ -164,8 +178,8 @@ func applicationWillResignActive(_ application: UIApplication) {
     }
 ```
 
-   * 2.3 一定要设置最大重新连接的次数，不然app会无限重新连接
+**一定要设置最大重新连接的次数，不然app会无限重新连接**
 
-   * 2.4 连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。
+**连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。**
 
-- #### 3 以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢
+> 以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢

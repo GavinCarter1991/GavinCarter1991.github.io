@@ -9,8 +9,9 @@ categories: "swift"
 
 >项目第一版网络框架用的是[siesta](https://github.com/bustoutsolutions/siesta),它的缓存与自动刷新确实很好用而且代码很简洁，但是在文件的上传与下载以及对返回类型需要精确匹配要求这方面就很不友好，所以在第二版的我选择了[Moya](https://github.com/Moya/Moya),它是一个网络抽象层，它在[Alamofire](https://github.com/Alamofire/Alamofire)基础上提供了一系列的抽象接口方便维护。关于`Moya`的使用介绍很多，我就不再赘述了。我主要记录一下我在使用过程中学到的处理方式。我的网络框架是搭着[HandyJSON](https://github.com/alibaba/HandyJSON)和[RxSwift](https://github.com/Moya/Moya/blob/master/docs/RxSwift.md)一起构建的。
 
-### 1 Moya
-- 1 代码
+### Moya
+**代码**
+
 ```
 import Foundation
 import enum Result.Result
@@ -165,17 +166,21 @@ public final class NetworkLoadingPlugin: PluginType {
     }
 }
 ```
-- 2 模式Target -> Endpoint -> Request
+**模式Target -> Endpoint -> Request**
+
 ![来自GitHub图片](https://i-blog.csdnimg.cn/blog_migrate/24422c24f3f5cf628f45d967e4ec09c9.png)
 
-`Moya`虽然是基于Alamofire的但是我们在代码中却不会和Alamofire打交道，它是通过枚举来管理API的。我在项目中定义来一个API基类，然后为每一个模块定义了一个API管理类。
+> `Moya`虽然是基于Alamofire的但是我们在代码中却不会和Alamofire打交道，它是通过枚举来管理API的。我在项目中定义来一个API基类，然后为每一个模块定义了一个API管理类。
+
 ```
 enum HomeApiManager {
     case getBanner // 获取轮播
     case getAnnouncement(per_page: String) // 获取公告
 }
 ```
-对于请求类型的改变和对于URL的改变也是通过枚举
+
+**对于请求类型的改变和对于URL的改变也是通过枚举**
+
 ```
 var method: Moya.Method {
         switch self {
@@ -197,7 +202,8 @@ var path: String {
         }
     }
 ```
-请求任务
+**请求任务**
+
 ```
     var task: Task {
         switch self {
@@ -227,8 +233,10 @@ var path: String {
         }
     }
 ```
-- 3 插件机制
-`Moya`的另一个强大的功能就是它的插件机制，提供了两个接口，willSendRequest 和 didReceiveResponse，它可以在请求前和请求后做一些额外的操作而和主功能是解耦的，比如可以在请求前开始加载动画请求结束后移除加载动画，还可以自定义插件。
+### 插件机制
+
+> `Moya`的另一个强大的功能就是它的插件机制，提供了两个接口，willSendRequest 和 didReceiveResponse，它可以在请求前和请求后做一些额外的操作而和主功能是解耦的，比如可以在请求前开始加载动画请求结束后移除加载动画，还可以自定义插件。
+
 ```
 final class RequestAlertPlugin: PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
@@ -258,19 +266,31 @@ public final class NetworkLoadingPlugin: PluginType {
     }
 }
 ```
-Moya默认有4个插件
-1. AccessTokenPlugin    // 管理AccessToken的插件
-2. CredentialsPlugin       // 管理认证的插件
-3. NetworkActivityPlugin // 管理网络状态的插件
-4. NetworkLoggerPlugin // 管理网络log的插件
+> Moya默认有4个插件
+> 
+> 1. AccessTokenPlugin    // 管理AccessToken的插件
+> 
+> 2. CredentialsPlugin       // 管理认证的插件
+> 
+> 3. NetworkActivityPlugin // 管理网络状态的插件
+> 
+> 4. NetworkLoggerPlugin // 管理网络log的插件
 
-### 3 RxSwift
-这里的RxSwift不是完整的RxSwift，而是为Moya定制的一个扩展(pod 'Moya/RxSwift')在数据请求回来后进行处理。
-1. request()  传入API
-2. asObservable() 是Moya为RxSwift提供的扩展方法，返回可监听序列
-3. mapHandyJsonModel() 也是Moya RxSwift的扩展方法进行自定义的，可以把返回的数据解析成model
-4. subscribe() 是对处理过的 Observable 订阅一个 onNext 的观察者，一旦得到JSON格式的数据，就会经行相应的处理
-5. disposed() 是RxSwift的一个自动内存处理机制，类似ARC，会自动处理不需要的对象
+
+### RxSwift
+
+> 这里的RxSwift不是完整的RxSwift，而是为Moya定制的一个扩展(pod 'Moya/RxSwift')在数据请求回来后进行处理。
+> 
+> 1. request()  传入API
+> 
+> 2. asObservable() 是Moya为RxSwift提供的扩展方法，返回可监听序列
+> 
+> 3. mapHandyJsonModel() 也是Moya RxSwift的扩展方法进行自定义的，可以把返回的数据解析成model
+> 
+> 4. subscribe() 是对处理过的 Observable 订阅一个 onNext 的观察者，一旦得到JSON格式的数据，就会经行相应的处理
+> 
+> 5. disposed() 是RxSwift的一个自动内存处理机制，类似ARC，会自动处理不需要的对象
+
 ```
 /// 数据 转 模型
 extension ObservableType where E == Response {
@@ -321,7 +341,8 @@ extension WTApiManager {
 }
 ```
 
-### 4 HandyJSON
+### HandyJSON
+
 ```
 class BaseModel: HandyJSON {
     var status: Int = 0
@@ -343,5 +364,7 @@ WTApiManager.NetOtherRequest(disposeBag: disposeBag, type: .getMarketsPrice, mod
 }) {}
 ```
 
-### 5 以上就是我在项目中使用`Moya+HandyJSON+RxSwift`的方法，如果有错误或者不足之处还望指正，谢谢
+### 以上就是我在项目中使用
+
+**`Moya+HandyJSON+RxSwift`的方法，如果有错误或者不足之处还望指正，谢谢**
 
